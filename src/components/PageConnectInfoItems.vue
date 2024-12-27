@@ -24,7 +24,6 @@
         class="box-card"
         shadow="hover"
         style="margin-right: 1rem; margin-bottom: 1rem; position: relative">
-        <template #header>
           <div class="card-header">
             <span style="word-break: break-all"
               >{{ i.nickname || '<"未知">' }}({{ i.userId }})</span
@@ -34,7 +33,7 @@
               >删除</el-button
             >
           </div>
-        </template>
+</template>
 
         <div
           v-if="
@@ -62,10 +61,10 @@
           style="position: absolute; width: 17rem; height: 14rem; background: #fff; z-index: 1">
           <!-- <div style="position: absolute; width: 17rem; height: 14rem; background: #fff; z-index: 1;"> -->
 
-          <template v-if="i.id === curCaptchaIdSet">
+<template>
             <div>已提交 ticket，正在等待 gocqhttp 回应</div>
-          </template>
-          <template v-else>
+</template>
+<template>
             <div style="margin-left: 2rem">滑条验证码流程</div>
             <!-- <div><a style="line-break: anywhere;" :href="i.adapter?.goCqHttpLoginDeviceLockUrl" target="_blank">{{ i.adapter?.goCqHttpLoginDeviceLockUrl }}</a></div> -->
             <div>
@@ -76,7 +75,7 @@
                 >{{ i.adapter?.goCqHttpLoginDeviceLockUrl }}</a
               >
             </div>
-          </template>
+</template>
         </div>
 
         <div
@@ -172,7 +171,7 @@
             <div>{{ i.adapter?.reverseAddr }}/ws</div>
           </el-form-item>
 
-          <template
+<template>
             v-if="
               i.platform === 'QQ' &&
               (i.protocolType === 'onebot' || i.protocolType === 'walle-q') &&
@@ -223,7 +222,7 @@
             </el-form-item>
           </template>
 
-          <template
+<template>
             v-if="
               i.platform === 'QQ' &&
               i.protocolType === 'onebot' &&
@@ -249,7 +248,7 @@
             </el-form-item>
           </template>
 
-          <template
+<template>
             v-if="
               i.platform === 'QQ' &&
               i.protocolType === 'onebot' &&
@@ -275,7 +274,7 @@
             </el-form-item>
           </template>
 
-          <template v-if="i.platform === 'QQ' && i.protocolType === 'red'">
+<template>
             <el-form-item label="协议">
               <div>[已弃用]Red</div>
             </el-form-item>
@@ -285,18 +284,18 @@
             <el-form-item label="连接地址">
               <div>{{ i.adapter?.host + ':' + i.adapter?.port }}</div>
             </el-form-item>
-          </template>
+</template>
 
-          <template v-if="i.platform === 'QQ' && i.protocolType === 'official'">
+<template>
             <el-form-item label="协议">
               <div>[WIP] 官方 QQ Bot</div>
             </el-form-item>
             <el-form-item label="AppID">
               <div>{{ i.adapter?.appID }}</div>
             </el-form-item>
-          </template>
+</template>
 
-          <template
+<template>
             v-if="
               i.platform === 'QQ' && i.protocolType === 'onebot' && i.adapter.builtinMode === 'gocq'
             ">
@@ -307,14 +306,14 @@
             </el-form-item>
           </template>
 
-          <template v-if="i.protocolType === 'satori'">
+<template>
             <el-form-item label="协议">
               <div>[WIP]Satori</div>
             </el-form-item>
             <el-form-item label="平台">
               <div>{{ i.platform }}</div>
             </el-form-item>
-          </template>
+</template>
 
           <!-- <el-form-item label="密码">
             <el-input type="password" v-model="i.password"></el-input>
@@ -390,7 +389,7 @@
       <el-form-item
         v-if="form.accountType === 0 && (form.protocol === 1 || form.protocol === 6)"
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>版本</span>
             <el-tooltip content="只有需要升级协议版本时才指定。" style="">
@@ -399,7 +398,7 @@
               </el-icon>
             </el-tooltip>
           </div>
-        </template>
+</template>
         <el-select v-model="form.appVersion">
           <el-option
             v-for="version of supportedQQVersions"
@@ -412,7 +411,7 @@
       <el-form-item
         v-if="form.accountType === 0 && (form.protocol === 1 || form.protocol === 6)"
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>签名服务</span>
             <el-tooltip
@@ -423,7 +422,7 @@
               </el-icon>
             </el-tooltip>
           </div>
-        </template>
+</template>
         <el-radio-group v-model="signConfigType" size="small" @change="signConfigTypeChange">
           <el-radio-button value="none">不使用</el-radio-button>
           <el-radio-button value="simple">简易配置</el-radio-button>
@@ -491,32 +490,32 @@
         ">
         <el-table :data="form.signServerConfig.signServers" table-layout="auto">
           <el-table-column prop="url" label="服务url">
-            <template #default="scope">
+<template>
               <el-input v-model="scope.row.url" placeholder="http://127.0.0.1:8080" />
-            </template>
+</template>
           </el-table-column>
           <el-table-column prop="key" label="服务key">
-            <template #default="scope">
+<template>
               <el-input v-model="scope.row.key" placeholder="114514" />
-            </template>
+</template>
           </el-table-column>
           <el-table-column prop="authorization" label="服务鉴权">
-            <template #default="scope">
+<template>
               <el-input v-model="scope.row.authorization" placeholder="Bearer xxxx" />
-            </template>
+</template>
           </el-table-column>
           <el-table-column align="right">
             <!-- eslint-disable-next-line vue/no-unused-vars -->
-            <template #header="scope">
+<template>
               <el-button size="small" type="primary" @click="handleSignServerAdd"
                 >新增一行</el-button
               >
-            </template>
-            <template #default="scope">
+</template>
+<template>
               <el-button size="small" type="danger" @click="handleSignServerDelete(scope.row.url)"
                 >删除</el-button
               >
-            </template>
+</template>
           </el-table-column>
         </el-table>
       </el-form-item>
@@ -527,17 +526,16 @@
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>自动切换规则</span>
             <el-tooltip style="">
-              <template #content>
                 判断签名服务不可用（需要切换）的额外规则<br />
                 - 不设置（此时仅在请求无法返回结果时判定为不可用）<br />
                 - 在获取到的 sign 为空（若选此建议关闭
                 auto-register，一般为实例未注册但是请求签名的情况）<br />
                 - 在获取到的 sign 或 token 为空（若选此建议关闭 auto-refresh-token）
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -557,16 +555,15 @@
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>最大尝试次数</span>
             <el-tooltip style="">
-              <template #content>
                 连续寻找可用签名服务器最大尝试次数<br />
                 为 0 时会在连续 3
                 次没有找到可用签名服务器后保持使用主签名服务器，不再尝试进行切换备用<br />
                 否则会在达到指定次数后 <strong>退出</strong> 主程序
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -586,17 +583,16 @@
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>请求超时时间</span>
             <el-tooltip style="">
-              <template #content> 签名服务请求超时时间（s）</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
             </el-tooltip>
           </div>
-        </template>
+</template>
         <el-input-number
           v-model="form.signServerConfig.signServerTimeout"
           size="small"
@@ -611,11 +607,10 @@
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>自动注册实例</span>
             <el-tooltip style="">
-              <template #content>
                 在实例可能丢失（获取到的签名为空）时是否尝试重新注册<br />
                 为 true 时，在签名服务不可用时可能每次发消息都会尝试重新注册并签名。<br />
                 为 false 时，将不会自动注册实例，在签名服务器重启或实例被销毁后需要重启 go-cqhttp
@@ -623,7 +618,7 @@
                 否则后续消息将不会正常签名。关闭此项后可以考虑开启签名服务器端 auto_register
                 避免需要重启<br />
                 由于实现问题，当前建议关闭此项，推荐开启签名服务器的自动注册实例
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -641,15 +636,14 @@
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>自动刷新 token</span>
             <el-tooltip style="">
-              <template #content>
                 是否在 token 过期后立即自动刷新签名 token（在需要签名时才会检测到，主要防止 token
                 意外丢失）<br />
                 独立于定时刷新
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -667,14 +661,13 @@
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>刷新间隔</span>
             <el-tooltip style="">
-              <template #content>
                 定时刷新 token 间隔时间，单位为分钟，建议 30~40 分钟，不可超过 60 分钟<br />
                 目前丢失 token 也不会有太大影响，可设置为 0 以关闭，推荐开启
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -694,12 +687,12 @@
       </small>
     </el-form>
 
-    <template #footer>
+<template>
       <span class="dialog-footer">
         <el-button @click="dialogSetDataFormVisible = false">取消</el-button>
         <el-button type="primary" @click="doSetData">确定</el-button>
       </span>
-    </template>
+</template>
   </el-dialog>
   <el-dialog
     v-model="dialogSetSignServerVisible"
@@ -732,7 +725,7 @@
         <el-text type="warning" size="small">如果不知道这是什么，请保持默认选中的最新版本</el-text>
       </el-space>
     </el-form-item>
-    <template #footer>
+<template>
       <span class="dialog-footer">
         <el-button @click="dialogSetSignServerVisible = false">取消</el-button>
         <el-button
@@ -742,7 +735,7 @@
           >确定</el-button
         >
       </span>
-    </template>
+</template>
   </el-dialog>
   <el-dialog
     v-model="dialogFormVisible"
@@ -754,7 +747,7 @@
     <el-button style="float: right; margin-top: -4rem" @click="openSocks"
       >辅助工具 -13325 端口</el-button
     >
-    <template v-if="form.step === 1">
+<template>
       <el-alert
         v-if="form.accountType === 7"
         type="error"
@@ -864,7 +857,6 @@
         <el-form-item
           v-if="form.accountType === 0 && (form.protocol === 1 || form.protocol === 6)"
           :label-width="formLabelWidth">
-          <template #label>
             <div style="display: flex; align-items: center">
               <span>版本</span>
               <el-tooltip content="只有需要升级协议版本时才指定。" style="">
@@ -873,7 +865,7 @@
                 </el-icon>
               </el-tooltip>
             </div>
-          </template>
+</template>
           <el-select v-model="form.appVersion">
             <el-option
               v-for="version of supportedQQVersions"
@@ -954,7 +946,7 @@
         </el-form-item>
 
         <!-- <el-form-item label="附加参数" :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center;">
               <span>附加参数</span>
               <el-tooltip content="默认参数的作用为让 gocqhttp 在启动时自动更新协议" style="">
@@ -963,14 +955,14 @@
                 </el-icon>
               </el-tooltip>
             </div>
-          </template>
+</template>
           <el-input v-model="form.extraArgs" type="string" autocomplete="off"></el-input>
         </el-form-item> -->
 
         <el-form-item
           v-if="form.accountType === 0 && (form.protocol === 1 || form.protocol === 6)"
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>签名服务</span>
               <el-tooltip
@@ -981,7 +973,7 @@
                 </el-icon>
               </el-tooltip>
             </div>
-          </template>
+</template>
           <el-radio-group v-model="signConfigType" size="small" @change="signConfigTypeChange">
             <el-radio-button value="none">不使用</el-radio-button>
             <el-radio-button value="simple">简易配置</el-radio-button>
@@ -1049,32 +1041,32 @@
           ">
           <el-table :data="form.signServerConfig.signServers" table-layout="auto">
             <el-table-column prop="url" label="服务url">
-              <template #default="scope">
+<template>
                 <el-input v-model="scope.row.url" placeholder="http://127.0.0.1:8080" />
-              </template>
+</template>
             </el-table-column>
             <el-table-column prop="key" label="服务key">
-              <template #default="scope">
+<template>
                 <el-input v-model="scope.row.key" placeholder="114514" />
-              </template>
+</template>
             </el-table-column>
             <el-table-column prop="authorization" label="服务鉴权">
-              <template #default="scope">
+<template>
                 <el-input v-model="scope.row.authorization" placeholder="Bearer xxxx" />
-              </template>
+</template>
             </el-table-column>
             <el-table-column align="right">
               <!-- eslint-disable-next-line vue/no-unused-vars -->
-              <template #header="scope">
+<template>
                 <el-button size="small" type="primary" @click="handleSignServerAdd"
                   >新增一行</el-button
                 >
-              </template>
-              <template #default="scope">
+</template>
+<template>
                 <el-button size="small" type="danger" @click="handleSignServerDelete(scope.row.url)"
                   >删除</el-button
                 >
-              </template>
+</template>
             </el-table-column>
           </el-table>
         </el-form-item>
@@ -1085,17 +1077,16 @@
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>自动切换规则</span>
               <el-tooltip style="">
-                <template #content>
                   判断签名服务不可用（需要切换）的额外规则<br />
                   - 不设置（此时仅在请求无法返回结果时判定为不可用）<br />
                   - 在获取到的 sign 为空（若选此建议关闭
                   auto-register，一般为实例未注册但是请求签名的情况）<br />
                   - 在获取到的 sign 或 token 为空（若选此建议关闭 auto-refresh-token）
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -1115,16 +1106,15 @@
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>最大尝试次数</span>
               <el-tooltip style="">
-                <template #content>
                   连续寻找可用签名服务器最大尝试次数<br />
                   为 0 时会在连续 3
                   次没有找到可用签名服务器后保持使用主签名服务器，不再尝试进行切换备用<br />
                   否则会在达到指定次数后 <strong>退出</strong> 主程序
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -1144,17 +1134,16 @@
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>请求超时时间</span>
               <el-tooltip style="">
-                <template #content> 签名服务请求超时时间 (s) </template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
               </el-tooltip>
             </div>
-          </template>
+</template>
           <el-input-number
             v-model="form.signServerConfig.signServerTimeout"
             size="small"
@@ -1169,11 +1158,10 @@
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>自动注册实例</span>
               <el-tooltip style="">
-                <template #content>
                   在实例可能丢失（获取到的签名为空）时是否尝试重新注册<br />
                   为 true 时，在签名服务不可用时可能每次发消息都会尝试重新注册并签名。<br />
                   为 false 时，将不会自动注册实例，在签名服务器重启或实例被销毁后需要重启 go-cqhttp
@@ -1181,7 +1169,7 @@
                   否则后续消息将不会正常签名。关闭此项后可以考虑开启签名服务器端 auto_register
                   避免需要重启<br />
                   由于实现问题，当前建议关闭此项，推荐开启签名服务器的自动注册实例
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -1199,15 +1187,14 @@
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>自动刷新 token</span>
               <el-tooltip style="">
-                <template #content>
                   是否在 token 过期后立即自动刷新签名 token（在需要签名时才会检测到，主要防止 token
                   意外丢失）<br />
                   独立于定时刷新
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -1225,14 +1212,13 @@
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>刷新间隔</span>
               <el-tooltip style="">
-                <template #content>
                   定时刷新 token 间隔时间，单位为分钟，建议 30~40 分钟，不可超过 60 分钟<br />
                   目前丢失 token 也不会有太大影响，可设置为 0 以关闭，推荐开启
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -1632,7 +1618,7 @@
         </el-form-item>
       </el-form>
     </template>
-    <template v-else-if="form.step === 2">
+<template>
       <el-timeline style="min-height: 260px">
         <el-timeline-item
           v-for="(activity, index) in activities"
@@ -1665,17 +1651,16 @@
               curConn.adapter?.loginState === goCqHttpStateCode.InLoginDeviceLock &&
               curConn.adapter?.goCqHttpLoginDeviceLockUrl
             ">
-            <template v-if="curConn.id === curCaptchaIdSet">
               <div>已提交 ticket，正在等待 gocqhttp 回应</div>
-            </template>
-            <template v-else>
+</template>
+<template>
               <div>账号已开启设备锁，请访问此链接进行验证：</div>
               <div style="line-break: anywhere">
                 <el-link :href="curConn.adapter?.goCqHttpLoginDeviceLockUrl" target="_blank">{{
                   curConn.adapter?.goCqHttpLoginDeviceLockUrl
                 }}</el-link>
               </div>
-            </template>
+</template>
 
             <div>
               <div>确认验证完成后，点击此按钮：</div>
@@ -1692,10 +1677,10 @@
               curConn.adapter?.loginState === goCqHttpStateCode.InLoginBar &&
               curConn.adapter?.goCqHttpLoginDeviceLockUrl
             ">
-            <template v-if="curConn.id === curCaptchaIdSet">
+<template>
               <div>已提交 ticket，正在等待 gocqhttp 回应</div>
-            </template>
-            <template v-else>
+</template>
+<template>
               <div>滑条验证码流程，访问以下链接操作：</div>
               <div style="line-break: anywhere">
                 <div>
@@ -1708,7 +1693,7 @@
                 </div>
                 <!-- <el-link :href="curConn.adapter?.goCqHttpLoginDeviceLockUrl" target="_blank">{{curConn.adapter?.goCqHttpLoginDeviceLockUrl}}</el-link> -->
               </div>
-            </template>
+</template>
           </div>
 
           <div
@@ -1759,23 +1744,20 @@
         </el-timeline-item>
       </el-timeline>
     </template>
-    <template v-else-if="form.step === 3">
+<template>
       <el-result
         icon="success"
         title="成功啦!"
         sub-title="现在账号状态应该是“已连接”了，去试一试骰子吧！">
-        <!-- <template #extra></template> -->
       </el-result>
-    </template>
-    <template v-else-if="form.step === 4">
+</template>
+<template>
       <el-result icon="success" title="成功啦!" sub-title="操作完成，现在可以进行下一步了">
-        <!-- <template #extra></template> -->
       </el-result>
-    </template>
+</template>
 
-    <template #footer>
+<template>
       <span class="dialog-footer">
-        <template v-if="form.step === 1">
           <el-button @click="dialogFormVisible = false">取消</el-button>
           <el-button
             type="primary"
@@ -1799,10 +1781,10 @@
             @click="goStepTwo">
             下一步</el-button
           >
-        </template>
-        <template v-if="form.isEnd">
+</template>
+<template>
           <el-button @click="formClose">确定</el-button>
-        </template>
+</template>
       </span>
     </template>
   </el-dialog>
@@ -2565,7 +2547,6 @@ const doRemove = async (i: DiceConnection) => {
         class="box-card"
         shadow="hover"
         style="margin-right: 1rem; margin-bottom: 1rem; position: relative">
-        <template #header>
           <div class="card-header">
             <span style="word-break: break-all"
               >{{ i.nickname || '<"未知">' }}({{ i.userId }})</span
@@ -2575,7 +2556,7 @@ const doRemove = async (i: DiceConnection) => {
               >删除</el-button
             >
           </div>
-        </template>
+</template>
 
         <div
           v-if="
@@ -2603,10 +2584,10 @@ const doRemove = async (i: DiceConnection) => {
           style="position: absolute; width: 17rem; height: 14rem; background: #fff; z-index: 1">
           <!-- <div style="position: absolute; width: 17rem; height: 14rem; background: #fff; z-index: 1;"> -->
 
-          <template v-if="i.id === curCaptchaIdSet">
+<template>
             <div>已提交 ticket，正在等待 gocqhttp 回应</div>
-          </template>
-          <template v-else>
+</template>
+<template>
             <div style="margin-left: 2rem">滑条验证码流程</div>
             <!-- <div><a style="line-break: anywhere;" :href="i.adapter?.goCqHttpLoginDeviceLockUrl" target="_blank">{{ i.adapter?.goCqHttpLoginDeviceLockUrl }}</a></div> -->
             <div>
@@ -2617,7 +2598,7 @@ const doRemove = async (i: DiceConnection) => {
                 >{{ i.adapter?.goCqHttpLoginDeviceLockUrl }}</a
               >
             </div>
-          </template>
+</template>
         </div>
 
         <div
@@ -2713,7 +2694,7 @@ const doRemove = async (i: DiceConnection) => {
             <div>{{ i.adapter?.reverseAddr }}/ws</div>
           </el-form-item>
 
-          <template
+<template>
             v-if="
               i.platform === 'QQ' &&
               (i.protocolType === 'onebot' || i.protocolType === 'walle-q') &&
@@ -2764,7 +2745,7 @@ const doRemove = async (i: DiceConnection) => {
             </el-form-item>
           </template>
 
-          <template
+<template>
             v-if="
               i.platform === 'QQ' &&
               i.protocolType === 'onebot' &&
@@ -2790,7 +2771,7 @@ const doRemove = async (i: DiceConnection) => {
             </el-form-item>
           </template>
 
-          <template
+<template>
             v-if="
               i.platform === 'QQ' &&
               i.protocolType === 'onebot' &&
@@ -2816,7 +2797,7 @@ const doRemove = async (i: DiceConnection) => {
             </el-form-item>
           </template>
 
-          <template v-if="i.platform === 'QQ' && i.protocolType === 'red'">
+<template>
             <el-form-item label="协议">
               <div>[已弃用]Red</div>
             </el-form-item>
@@ -2826,18 +2807,18 @@ const doRemove = async (i: DiceConnection) => {
             <el-form-item label="连接地址">
               <div>{{ i.adapter?.host + ':' + i.adapter?.port }}</div>
             </el-form-item>
-          </template>
+</template>
 
-          <template v-if="i.platform === 'QQ' && i.protocolType === 'official'">
+<template>
             <el-form-item label="协议">
               <div>[WIP] 官方 QQ Bot</div>
             </el-form-item>
             <el-form-item label="AppID">
               <div>{{ i.adapter?.appID }}</div>
             </el-form-item>
-          </template>
+</template>
 
-          <template
+<template>
             v-if="
               i.platform === 'QQ' && i.protocolType === 'onebot' && i.adapter.builtinMode === 'gocq'
             ">
@@ -2848,14 +2829,14 @@ const doRemove = async (i: DiceConnection) => {
             </el-form-item>
           </template>
 
-          <template v-if="i.protocolType === 'satori'">
+<template>
             <el-form-item label="协议">
               <div>[WIP]Satori</div>
             </el-form-item>
             <el-form-item label="平台">
               <div>{{ i.platform }}</div>
             </el-form-item>
-          </template>
+</template>
 
           <!-- <el-form-item label="密码">
             <el-input type="password" v-model="i.password"></el-input>
@@ -2931,7 +2912,7 @@ const doRemove = async (i: DiceConnection) => {
       <el-form-item
         v-if="form.accountType === 0 && (form.protocol === 1 || form.protocol === 6)"
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>版本</span>
             <el-tooltip content="只有需要升级协议版本时才指定。" style="">
@@ -2940,7 +2921,7 @@ const doRemove = async (i: DiceConnection) => {
               </el-icon>
             </el-tooltip>
           </div>
-        </template>
+</template>
         <el-select v-model="form.appVersion">
           <el-option
             v-for="version of supportedQQVersions"
@@ -2953,7 +2934,7 @@ const doRemove = async (i: DiceConnection) => {
       <el-form-item
         v-if="form.accountType === 0 && (form.protocol === 1 || form.protocol === 6)"
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>签名服务</span>
             <el-tooltip
@@ -2964,7 +2945,7 @@ const doRemove = async (i: DiceConnection) => {
               </el-icon>
             </el-tooltip>
           </div>
-        </template>
+</template>
         <el-radio-group v-model="signConfigType" size="small" @change="signConfigTypeChange">
           <el-radio-button value="none">不使用</el-radio-button>
           <el-radio-button value="simple">简易配置</el-radio-button>
@@ -3032,32 +3013,32 @@ const doRemove = async (i: DiceConnection) => {
         ">
         <el-table :data="form.signServerConfig.signServers" table-layout="auto">
           <el-table-column prop="url" label="服务url">
-            <template #default="scope">
+<template>
               <el-input v-model="scope.row.url" placeholder="http://127.0.0.1:8080" />
-            </template>
+</template>
           </el-table-column>
           <el-table-column prop="key" label="服务key">
-            <template #default="scope">
+<template>
               <el-input v-model="scope.row.key" placeholder="114514" />
-            </template>
+</template>
           </el-table-column>
           <el-table-column prop="authorization" label="服务鉴权">
-            <template #default="scope">
+<template>
               <el-input v-model="scope.row.authorization" placeholder="Bearer xxxx" />
-            </template>
+</template>
           </el-table-column>
           <el-table-column align="right">
             <!-- eslint-disable-next-line vue/no-unused-vars -->
-            <template #header="scope">
+<template>
               <el-button size="small" type="primary" @click="handleSignServerAdd"
                 >新增一行</el-button
               >
-            </template>
-            <template #default="scope">
+</template>
+<template>
               <el-button size="small" type="danger" @click="handleSignServerDelete(scope.row.url)"
                 >删除</el-button
               >
-            </template>
+</template>
           </el-table-column>
         </el-table>
       </el-form-item>
@@ -3068,17 +3049,16 @@ const doRemove = async (i: DiceConnection) => {
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>自动切换规则</span>
             <el-tooltip style="">
-              <template #content>
                 判断签名服务不可用（需要切换）的额外规则<br />
                 - 不设置（此时仅在请求无法返回结果时判定为不可用）<br />
                 - 在获取到的 sign 为空（若选此建议关闭
                 auto-register，一般为实例未注册但是请求签名的情况）<br />
                 - 在获取到的 sign 或 token 为空（若选此建议关闭 auto-refresh-token）
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -3098,16 +3078,15 @@ const doRemove = async (i: DiceConnection) => {
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>最大尝试次数</span>
             <el-tooltip style="">
-              <template #content>
                 连续寻找可用签名服务器最大尝试次数<br />
                 为 0 时会在连续 3
                 次没有找到可用签名服务器后保持使用主签名服务器，不再尝试进行切换备用<br />
                 否则会在达到指定次数后 <strong>退出</strong> 主程序
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -3127,17 +3106,16 @@ const doRemove = async (i: DiceConnection) => {
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>请求超时时间</span>
             <el-tooltip style="">
-              <template #content> 签名服务请求超时时间（s）</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
             </el-tooltip>
           </div>
-        </template>
+</template>
         <el-input-number
           v-model="form.signServerConfig.signServerTimeout"
           size="small"
@@ -3152,11 +3130,10 @@ const doRemove = async (i: DiceConnection) => {
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>自动注册实例</span>
             <el-tooltip style="">
-              <template #content>
                 在实例可能丢失（获取到的签名为空）时是否尝试重新注册<br />
                 为 true 时，在签名服务不可用时可能每次发消息都会尝试重新注册并签名。<br />
                 为 false 时，将不会自动注册实例，在签名服务器重启或实例被销毁后需要重启 go-cqhttp
@@ -3164,7 +3141,7 @@ const doRemove = async (i: DiceConnection) => {
                 否则后续消息将不会正常签名。关闭此项后可以考虑开启签名服务器端 auto_register
                 避免需要重启<br />
                 由于实现问题，当前建议关闭此项，推荐开启签名服务器的自动注册实例
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -3182,15 +3159,14 @@ const doRemove = async (i: DiceConnection) => {
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>自动刷新 token</span>
             <el-tooltip style="">
-              <template #content>
                 是否在 token 过期后立即自动刷新签名 token（在需要签名时才会检测到，主要防止 token
                 意外丢失）<br />
                 独立于定时刷新
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -3208,14 +3184,13 @@ const doRemove = async (i: DiceConnection) => {
           signConfigType === 'advanced'
         "
         :label-width="formLabelWidth">
-        <template #label>
+<template>
           <div style="display: flex; align-items: center">
             <span>刷新间隔</span>
             <el-tooltip style="">
-              <template #content>
                 定时刷新 token 间隔时间，单位为分钟，建议 30~40 分钟，不可超过 60 分钟<br />
                 目前丢失 token 也不会有太大影响，可设置为 0 以关闭，推荐开启
-              </template>
+</template>
               <el-icon>
                 <QuestionFilled />
               </el-icon>
@@ -3235,12 +3210,12 @@ const doRemove = async (i: DiceConnection) => {
       </small>
     </el-form>
 
-    <template #footer>
+<template>
       <span class="dialog-footer">
         <el-button @click="dialogSetDataFormVisible = false">取消</el-button>
         <el-button type="primary" @click="doSetData">确定</el-button>
       </span>
-    </template>
+</template>
   </el-dialog>
   <el-dialog
     v-model="dialogSetSignServerVisible"
@@ -3273,7 +3248,7 @@ const doRemove = async (i: DiceConnection) => {
         <el-text type="warning" size="small">如果不知道这是什么，请保持默认选中的最新版本</el-text>
       </el-space>
     </el-form-item>
-    <template #footer>
+<template>
       <span class="dialog-footer">
         <el-button @click="dialogSetSignServerVisible = false">取消</el-button>
         <el-button
@@ -3283,7 +3258,7 @@ const doRemove = async (i: DiceConnection) => {
           >确定</el-button
         >
       </span>
-    </template>
+</template>
   </el-dialog>
   <el-dialog
     v-model="dialogFormVisible"
@@ -3295,7 +3270,7 @@ const doRemove = async (i: DiceConnection) => {
     <el-button style="float: right; margin-top: -4rem" @click="openSocks"
       >辅助工具 -13325 端口</el-button
     >
-    <template v-if="form.step === 1">
+<template>
       <el-alert
         v-if="form.accountType === 7"
         type="error"
@@ -3405,7 +3380,6 @@ const doRemove = async (i: DiceConnection) => {
         <el-form-item
           v-if="form.accountType === 0 && (form.protocol === 1 || form.protocol === 6)"
           :label-width="formLabelWidth">
-          <template #label>
             <div style="display: flex; align-items: center">
               <span>版本</span>
               <el-tooltip content="只有需要升级协议版本时才指定。" style="">
@@ -3414,7 +3388,7 @@ const doRemove = async (i: DiceConnection) => {
                 </el-icon>
               </el-tooltip>
             </div>
-          </template>
+</template>
           <el-select v-model="form.appVersion">
             <el-option
               v-for="version of supportedQQVersions"
@@ -3495,7 +3469,7 @@ const doRemove = async (i: DiceConnection) => {
         </el-form-item>
 
         <!-- <el-form-item label="附加参数" :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center;">
               <span>附加参数</span>
               <el-tooltip content="默认参数的作用为让 gocqhttp 在启动时自动更新协议" style="">
@@ -3504,14 +3478,14 @@ const doRemove = async (i: DiceConnection) => {
                 </el-icon>
               </el-tooltip>
             </div>
-          </template>
+</template>
           <el-input v-model="form.extraArgs" type="string" autocomplete="off"></el-input>
         </el-form-item> -->
 
         <el-form-item
           v-if="form.accountType === 0 && (form.protocol === 1 || form.protocol === 6)"
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>签名服务</span>
               <el-tooltip
@@ -3522,7 +3496,7 @@ const doRemove = async (i: DiceConnection) => {
                 </el-icon>
               </el-tooltip>
             </div>
-          </template>
+</template>
           <el-radio-group v-model="signConfigType" size="small" @change="signConfigTypeChange">
             <el-radio-button value="none">不使用</el-radio-button>
             <el-radio-button value="simple">简易配置</el-radio-button>
@@ -3590,32 +3564,32 @@ const doRemove = async (i: DiceConnection) => {
           ">
           <el-table :data="form.signServerConfig.signServers" table-layout="auto">
             <el-table-column prop="url" label="服务url">
-              <template #default="scope">
+<template>
                 <el-input v-model="scope.row.url" placeholder="http://127.0.0.1:8080" />
-              </template>
+</template>
             </el-table-column>
             <el-table-column prop="key" label="服务key">
-              <template #default="scope">
+<template>
                 <el-input v-model="scope.row.key" placeholder="114514" />
-              </template>
+</template>
             </el-table-column>
             <el-table-column prop="authorization" label="服务鉴权">
-              <template #default="scope">
+<template>
                 <el-input v-model="scope.row.authorization" placeholder="Bearer xxxx" />
-              </template>
+</template>
             </el-table-column>
             <el-table-column align="right">
               <!-- eslint-disable-next-line vue/no-unused-vars -->
-              <template #header="scope">
+<template>
                 <el-button size="small" type="primary" @click="handleSignServerAdd"
                   >新增一行</el-button
                 >
-              </template>
-              <template #default="scope">
+</template>
+<template>
                 <el-button size="small" type="danger" @click="handleSignServerDelete(scope.row.url)"
                   >删除</el-button
                 >
-              </template>
+</template>
             </el-table-column>
           </el-table>
         </el-form-item>
@@ -3626,17 +3600,16 @@ const doRemove = async (i: DiceConnection) => {
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>自动切换规则</span>
               <el-tooltip style="">
-                <template #content>
                   判断签名服务不可用（需要切换）的额外规则<br />
                   - 不设置（此时仅在请求无法返回结果时判定为不可用）<br />
                   - 在获取到的 sign 为空（若选此建议关闭
                   auto-register，一般为实例未注册但是请求签名的情况）<br />
                   - 在获取到的 sign 或 token 为空（若选此建议关闭 auto-refresh-token）
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -3656,16 +3629,15 @@ const doRemove = async (i: DiceConnection) => {
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>最大尝试次数</span>
               <el-tooltip style="">
-                <template #content>
                   连续寻找可用签名服务器最大尝试次数<br />
                   为 0 时会在连续 3
                   次没有找到可用签名服务器后保持使用主签名服务器，不再尝试进行切换备用<br />
                   否则会在达到指定次数后 <strong>退出</strong> 主程序
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -3685,17 +3657,16 @@ const doRemove = async (i: DiceConnection) => {
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>请求超时时间</span>
               <el-tooltip style="">
-                <template #content> 签名服务请求超时时间 (s) </template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
               </el-tooltip>
             </div>
-          </template>
+</template>
           <el-input-number
             v-model="form.signServerConfig.signServerTimeout"
             size="small"
@@ -3710,11 +3681,10 @@ const doRemove = async (i: DiceConnection) => {
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>自动注册实例</span>
               <el-tooltip style="">
-                <template #content>
                   在实例可能丢失（获取到的签名为空）时是否尝试重新注册<br />
                   为 true 时，在签名服务不可用时可能每次发消息都会尝试重新注册并签名。<br />
                   为 false 时，将不会自动注册实例，在签名服务器重启或实例被销毁后需要重启 go-cqhttp
@@ -3722,7 +3692,7 @@ const doRemove = async (i: DiceConnection) => {
                   否则后续消息将不会正常签名。关闭此项后可以考虑开启签名服务器端 auto_register
                   避免需要重启<br />
                   由于实现问题，当前建议关闭此项，推荐开启签名服务器的自动注册实例
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -3740,15 +3710,14 @@ const doRemove = async (i: DiceConnection) => {
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>自动刷新 token</span>
               <el-tooltip style="">
-                <template #content>
                   是否在 token 过期后立即自动刷新签名 token（在需要签名时才会检测到，主要防止 token
                   意外丢失）<br />
                   独立于定时刷新
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -3766,14 +3735,13 @@ const doRemove = async (i: DiceConnection) => {
             signConfigType === 'advanced'
           "
           :label-width="formLabelWidth">
-          <template #label>
+<template>
             <div style="display: flex; align-items: center">
               <span>刷新间隔</span>
               <el-tooltip style="">
-                <template #content>
                   定时刷新 token 间隔时间，单位为分钟，建议 30~40 分钟，不可超过 60 分钟<br />
                   目前丢失 token 也不会有太大影响，可设置为 0 以关闭，推荐开启
-                </template>
+</template>
                 <el-icon>
                   <QuestionFilled />
                 </el-icon>
@@ -4173,7 +4141,7 @@ const doRemove = async (i: DiceConnection) => {
         </el-form-item>
       </el-form>
     </template>
-    <template v-else-if="form.step === 2">
+<template>
       <el-timeline style="min-height: 260px">
         <el-timeline-item
           v-for="(activity, index) in activities"
@@ -4206,17 +4174,16 @@ const doRemove = async (i: DiceConnection) => {
               curConn.adapter?.loginState === goCqHttpStateCode.InLoginDeviceLock &&
               curConn.adapter?.goCqHttpLoginDeviceLockUrl
             ">
-            <template v-if="curConn.id === curCaptchaIdSet">
               <div>已提交 ticket，正在等待 gocqhttp 回应</div>
-            </template>
-            <template v-else>
+</template>
+<template>
               <div>账号已开启设备锁，请访问此链接进行验证：</div>
               <div style="line-break: anywhere">
                 <el-link :href="curConn.adapter?.goCqHttpLoginDeviceLockUrl" target="_blank">{{
                   curConn.adapter?.goCqHttpLoginDeviceLockUrl
                 }}</el-link>
               </div>
-            </template>
+</template>
 
             <div>
               <div>确认验证完成后，点击此按钮：</div>
@@ -4233,10 +4200,10 @@ const doRemove = async (i: DiceConnection) => {
               curConn.adapter?.loginState === goCqHttpStateCode.InLoginBar &&
               curConn.adapter?.goCqHttpLoginDeviceLockUrl
             ">
-            <template v-if="curConn.id === curCaptchaIdSet">
+<template>
               <div>已提交 ticket，正在等待 gocqhttp 回应</div>
-            </template>
-            <template v-else>
+</template>
+<template>
               <div>滑条验证码流程，访问以下链接操作：</div>
               <div style="line-break: anywhere">
                 <div>
@@ -4249,7 +4216,7 @@ const doRemove = async (i: DiceConnection) => {
                 </div>
                 <!-- <el-link :href="curConn.adapter?.goCqHttpLoginDeviceLockUrl" target="_blank">{{curConn.adapter?.goCqHttpLoginDeviceLockUrl}}</el-link> -->
               </div>
-            </template>
+</template>
           </div>
 
           <div
@@ -4300,23 +4267,20 @@ const doRemove = async (i: DiceConnection) => {
         </el-timeline-item>
       </el-timeline>
     </template>
-    <template v-else-if="form.step === 3">
+<template>
       <el-result
         icon="success"
         title="成功啦!"
         sub-title="现在账号状态应该是“已连接”了，去试一试骰子吧！">
-        <!-- <template #extra></template> -->
       </el-result>
-    </template>
-    <template v-else-if="form.step === 4">
+</template>
+<template>
       <el-result icon="success" title="成功啦!" sub-title="操作完成，现在可以进行下一步了">
-        <!-- <template #extra></template> -->
       </el-result>
-    </template>
+</template>
 
-    <template #footer>
+<template>
       <span class="dialog-footer">
-        <template v-if="form.step === 1">
           <el-button @click="dialogFormVisible = false">取消</el-button>
           <el-button
             type="primary"
@@ -4340,10 +4304,10 @@ const doRemove = async (i: DiceConnection) => {
             @click="goStepTwo">
             下一步</el-button
           >
-        </template>
-        <template v-if="form.isEnd">
+</template>
+<template>
           <el-button @click="formClose">确定</el-button>
-        </template>
+</template>
       </span>
     </template>
   </el-dialog>
